@@ -25,7 +25,10 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
-install_requires = ['Django>=1.6']
+install_requires = [
+    'Django>=1.6',
+    'json-encoder>=0.4.3',
+]
 
 
 setup(
