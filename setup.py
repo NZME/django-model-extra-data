@@ -7,6 +7,7 @@ from __future__ import unicode_literals, absolute_import
 import codecs
 import os
 import re
+import sys
 
 from setuptools import setup, find_packages
 
@@ -29,6 +30,16 @@ install_requires = [
     'Django>=1.6',
     'json-encoder>=0.4.3',
 ]
+
+extra_requires = {
+    'rest_framework': [
+        'djangorestframework',
+    ],
+}
+
+if sys.version_info[0:2] < (3, 4):
+    # required for python < 3.4
+    extra_requires['rest_framework'].append('singledispatch>=3.4.0.3')
 
 
 setup(
@@ -53,7 +64,7 @@ setup(
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.5",
     ],
-    extras_require={},
+    extras_require=extra_requires,
     tests_require=[
         'pytest',
         'pytest-django',
