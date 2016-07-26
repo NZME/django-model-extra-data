@@ -8,12 +8,20 @@ install:
 - pip install .[rest_framework]
 script: python setup.py test
 sudo: false
+cache:
+  directories:
+  - .cache/pip/
+  - $HOME/.cache/pip
+  - docs/node_modules/
+  - $HOME/docs/node_modules
 deploy:
   provider: pypi
   user: nzme
   password:
     secure: pU9Bv0AndY5J3OtV1/tlLE2ipBHutcQQ993ZnU+gvrxAuD9OyDBGUiJVr7eFaxCFG3105HFocDK2sKHSdWS5bd9LCFpt/dlMvG9rtS+xvLpswwNwFcorml/sMz/fGs6hh5N2BVw1uNEuEl55UBcpRM/Tu5aC79yfXN/f8BbFXucVGrMS9DM3iZakglEuxJrx89CURjBGps808qBzj+yUqopFvXuFWhJuEEp5NCBaYPiQp+S+i1JDADB7HNAfogTbsqjvfj2fvpYSblUDUsQiDjQ/9eR+ol6VN/6ZK6tXX18eEVMy/iOBJEDKODgIR4mPrSrY4xbfJwkaxQbGy9inWLfX91D7Z+CmXzOe3AaE+zJ1IXKtaesj5mbsSMsi1Awc+GYfKZRz1zSbCx0a0b+t7wBs6rZCuc3efMhvVVxb7pKcOqf5Cnh7mlqBeinUzfo1l+rAYljQW1qUSv8KpLvf+MW5zohYqb2y5eLZKF7FFF6qSTIiFCcQgpn0MXZFIGpbWSUr5mx5V0lJ4wIHhdtGYwyBGO66e0Z0GdAVSpM+wdK6ZxjizF21/5OG5o6LSb89r9yi7ve2LdE+fldMmnzYbVvApUAnHu78Dx/Ad3i24wBCTWBsk5spspLpojMpvdfcMvesrXhNn5lfSsqqbkusp+d9OeOzeiFpUQMfSx8zX8Y=
   on:
+    branch: master
     tags: true
     distributions: sdist bdist_wheel
     repo: NZME/django-model-extra-data
+    condition: $TRAVIS_PYTHON_VERSION = "2.7"
