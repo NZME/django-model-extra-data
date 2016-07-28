@@ -8,6 +8,7 @@ import codecs
 import os
 import re
 import sys
+from itertools import chain
 
 from setuptools import setup, find_packages
 
@@ -41,6 +42,7 @@ if sys.version_info[0:2] < (3, 4):
     # required for python < 3.4
     extra_requires['rest_framework'].append('singledispatch>=3.4.0.3')
 
+extra_requires['all'] = list(chain.from_iterable(extra_requires.values()))
 
 setup(
     name='django-model-extra-data',
