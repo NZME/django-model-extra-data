@@ -3,9 +3,3 @@
 # Copyright (c) 2016 NZME
 
 from __future__ import unicode_literals, absolute_import
-
-SECRET_KEY = 'test-key'
-
-USE_TZ = True
-
-INSTALLED_APPS = ['tests.test_app']
