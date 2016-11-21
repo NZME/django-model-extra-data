@@ -4,18 +4,18 @@
 
 from __future__ import unicode_literals, absolute_import
 
+import datetime
 from decimal import Decimal
 
 import pytest
 from django import forms
 from django.utils.timezone import utc
-from rest_framework.serializers import ModelSerializer, datetime
-
 from django_model_extra_data.contrib.rest_framework.field_mapping import \
     map_form_to_serializer
 from django_model_extra_data.contrib.rest_framework.fields import FormField
 from django_model_extra_data.contrib.rest_framework.serializers import \
     ExtraDataSerializerMixin
+from rest_framework.serializers import ModelSerializer
 from tests.test_extra_data import ExtraModel
 
 
@@ -92,8 +92,8 @@ def data(validated_data):
 
 def test_serialize_extra_data(extra_model_instance, data):
     serializer = ExtraSerializer(instance=extra_model_instance)
-    data = serializer.data
-    assert data == data
+    serializer_data = serializer.data
+    assert data == serializer_data
 
 
 def test_deserialize_extra_data(data, validated_data):
